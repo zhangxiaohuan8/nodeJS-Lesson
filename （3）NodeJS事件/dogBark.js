@@ -14,3 +14,4 @@ dog1.on("bark",function(){
         process.exit();
     }
 })
+//intervalId.unref()取消连续执行

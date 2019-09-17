@@ -7,7 +7,7 @@ function Dog(name,energy){
     var that = this;
     setInterval(function(){
         that.emit("bark");
-    },3000)
+    },1000)
 }
 Dog.prototype.__proto__ = EventEmitter.prototype;
 module.exports={

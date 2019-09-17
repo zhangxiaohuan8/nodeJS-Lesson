@@ -1,8 +1,16 @@
 const http =require("http");
 
 var server = http.createServer(function(req,res){
-	res.write("hello world");
-	res.end();
+    /**
+     * http 协议，协议的结构 协议胡请求响应过程
+     * 状态码
+     */
+	//res.write("hello world");
+    //res.end();
+    res.writeHead(200,{"Content-Type":"text/plain"});
+    res.write("<h1>hello world<h1>");
+    //响应结束
+    res.end();
 });
 
 server.listen(8081);
