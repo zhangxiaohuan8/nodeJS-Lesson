@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mysql=require("mysql");
+var url=require("url");
 var blogsys=require("../config/blogsys.json");
 /* GET home page. */
 router.get('/login', function(req, res, next) {
@@ -36,17 +37,19 @@ router.post("/addChapter",function(req,res){
      console.log(err);
    }
    else{
-     console.log(result);
      res.render('ChapterList',{result:result})
    }
 
   })
 })
 router.get('/Chapter',function(req,res,next){
+  var urlObj=url.parse(req.url,true);
+  var id=urlObj.query;
+  console.log(id);
   var con=mysql.createConnection(blogsys);
   con.connect();//连接上数据库
   con.query("select * from chapters",function(err,result){
-    res.render("Chapter",{result:result});
+    res.render("Chapter",{result:result,id:id});
   })
 })
 module.exports = router;
